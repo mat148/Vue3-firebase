@@ -2,21 +2,33 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lesson 8</title>
+        <title>Lesson 9</title>
         <script src="https://unpkg.com/vue@3.0.2"></script>
+        <style>
+            ul, h1, p {
+                margin: 0;
+            }
+            ul {
+                list-style-type: none;
+            }
+            li {
+                border-bottom: 3px solid black;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            li.fav {
+                border-bottom-color: red;
+            }
+        </style>
     </head>
     <body>
-        <h1>Lesson 8</h1>
+        <h1>Lesson 9</h1>
 
         <div id="app">
-            <!-- attribute binding -->
-            <a v-bind:href="url">Link</a>
-            <br/>
-            <a :href="url">Link</a>
-
             <div v-if="showBooks">
                 <ul>
-                    <li v-for="book in books">
+                    <li v-for="book in books" :class="{ fav : book.isFav == true }" @click="toggleFav(book)">
                         <img :src="book.img" :alt="book.title + '-' + book.author">
                         <h3>{{ book.title }}</h3>
                         <p>{{ book.author }}</p>
