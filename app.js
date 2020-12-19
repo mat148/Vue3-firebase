@@ -4,9 +4,9 @@ const app = Vue.createApp({
             url: 'https://www.google.com',
             showBooks: true,
             books : [
-                { title: 'Name of the wind', author: 'Patrick Rothfuss', img: 'assets/1.jpg', isFav: 'false' },
-                { title: 'the way of kings', author: 'brandon sanderson', img: 'assets/2.jpg', isFav: 'false' },
-                { title: 'the final empire', author: 'brandon sanderson', img: 'assets/3.jpg', isFav: 'false' }
+                { title: 'Name of the wind', author: 'Patrick Rothfuss', img: 'assets/1.jpg', isFav: true },
+                { title: 'the way of kings', author: 'brandon sanderson', img: 'assets/2.jpg', isFav: false },
+                { title: 'the final empire', author: 'brandon sanderson', img: 'assets/3.jpg', isFav: true }
             ]
         }
     },
@@ -16,6 +16,11 @@ const app = Vue.createApp({
         },
         toggleFav(book) {
             book.isFav = !book.isFav
+        }
+    },
+    computed: {
+        filteredBooks() {
+            return this.books.filter((book) => book.isFav)
         }
     }
 })
